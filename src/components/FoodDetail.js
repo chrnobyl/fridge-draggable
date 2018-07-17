@@ -42,7 +42,7 @@ export default class FoodDetail extends Component {
   buttons(){
     if (CountdownTimer.isExpired() !== true){
       return (
-        <button onClick={() => this.throwAway(this.props.food.id,this.state.foodObj) } className="btn btn-danger">Eat food</button>
+        <button onClick={() => this.throwAway(this.props.food.id, this.state.foodObj) } className="btn btn-danger">Eat food</button>
       )
     } else {
       return (

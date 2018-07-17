@@ -38,17 +38,24 @@ export default class Form extends Component {
       })
 
     return (
-      <div className="formstyle">
+      <div className="formContainer">
         <h3>Add a food</h3>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} /><br/>
-          <input type="date" name="expiration_date" placeholder="Expiration date" value={this.state.expiration_date} onChange={this.handleChange} /><br/>
-          <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  /><br/>
-
+          <label>Name: </label>
+          <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} />
+          <br/>
+          <label>Expiration date: </label>
+          <input type="date" name="expiration_date" value={this.state.expiration_date} onChange={this.handleChange} />
+          <br/>
+          <label>Quantity: </label>
+          <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  />
+          <br/>
+          <label>Quantity: </label>
           <select name="category_id" value={this.state.category} onChange={this.handleChange}>
             {listCats}
           </select>
-
+          <br/>
+          <br/>
           <input className="btn btn-sm inverse" type="submit" value="Submit" />
         </form>
       </div>

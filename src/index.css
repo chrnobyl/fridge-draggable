@@ -23,6 +23,13 @@ body {
   margin: auto;
 }
 
-.formstyle {
+.formContainer {
+  width: 500px;
+  clear: both;
   margin-right: 10em;
+}
+
+.formContainer input {
+  width: 100%;
+  clear: both;
 }
