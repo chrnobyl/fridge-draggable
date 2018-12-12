@@ -1,0 +1,30 @@
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+.food {
+  padding: 10px;
+  line-height: 10px;
+  border: 5px solid black;
+  height: 200%;
+  max-width: 95%;
+  background-color: white;
+  opacity: 1;
+}
+
+.foodlist:hover {
+  opacity: 1;
+  background-color: transparent;
+}
+
+.form {
+  float: right;
+  margin: 25px 25px 0 0;
+}
+
+.button {
+  display: inline-block;
+}
