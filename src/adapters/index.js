@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/v1'
+const baseUrl = 'http://production.prjkpdvkjk.us-east-1.elasticbeanstalk.com/api/v1/'
 
 export default class FridgeAdapter  {
   static all(){

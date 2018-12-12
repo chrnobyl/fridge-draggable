@@ -50,7 +50,7 @@ export default class Form extends Component {
           <label>Quantity: </label>
           <input type="number" name="quantity" placeholder="Quantity" value={this.state.quantity} onChange={this.handleChange}  />
           <br/>
-          <label>Quantity: </label>
+          <label>Category: </label>
           <select name="category_id" value={this.state.category} onChange={this.handleChange}>
             {listCats}
           </select>
