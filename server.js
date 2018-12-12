@@ -3,8 +3,8 @@ var app = express();
 app.use(express.static(__dirname + '/'));
 
 if (process.env.NODE_ENV === 'production') {
-  server.use(express.static('client/build'));
-  server.use('*', express.static('client/build')); // Added this
+  app.use(express.static('client/build'));
+  app.use('*', express.static('client/build')); // Added this
 }
 
 app.get('*', (req, res) => {
