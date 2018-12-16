@@ -96,7 +96,7 @@ export default class FridgeContainer extends Component {
                 routerProps.history.push("/drawers")
                 return null
               }
-              return <CatShow drawer={drawer} foods = {this.state.foods} id={id}/>
+              return <CatShow drawer={drawer} foods={this.state.foods} id={id}/>
             }} />
             <Route exact path='/drawers/new' render={() => <Form newCat={this.createCat.bind(this)} type="Add a Drawer"/>} />
 

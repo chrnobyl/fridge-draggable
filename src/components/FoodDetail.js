@@ -40,7 +40,9 @@ export default class FoodDetail extends Component {
   }
 
   buttons(){
-    if (CountdownTimer.isExpired() !== true){
+    let today = new Date()
+    let expDate = new Date(this.state.expiration_date)
+    if (expDate > today){
       return (
         <button onClick={() => this.throwAway(this.props.food.id, this.state.foodObj) } className="btn btn-danger">Eat food</button>
       )

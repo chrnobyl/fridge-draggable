@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-var exp = false
 
 export default class CountdownTimer extends Component {
   constructor(props){
@@ -15,17 +14,12 @@ export default class CountdownTimer extends Component {
     this.seconds = this.seconds.bind(this)
   }
 
-  static isExpired(){
-    return exp
-  }
-
   calculateTimeRemaining(date){
     var dateArray = date.split("-")
     dateArray.map(el => parseInt(el))
     var startDate = new Date().getTime()
     var expDate = new Date(dateArray).getTime()
     if (expDate < startDate) {
-      exp = true
       return null
     } else {
       return Math.round(Math.abs((expDate - startDate) / 1000))
