@@ -9,7 +9,6 @@ export default class CatShow extends Component {
       name: props.drawer.name,
       foods: props.foods.filter(function(food){
         return food.category_id === props.id
-
       })
     }
   }

@@ -1,23 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import FoodDetail from './FoodDetail'
+import { Modal, Grid, Button } from 'semantic-ui-react'
 import '../index.css'
 
 export default function FoodList(props){
   return (
-    <div className="container-fluid">
-      <div className="foodlist">
-        <div className="btn-group">
-          <div className="row">
-          <h1>Foods:</h1>
-            {props.foods.map((food) => (
-              <div key={food.id} className="button">
-                <Link className="btn btn-lg btn-warning inverse" to={`/foods/${food.id}`}>{ food.name }</Link>
-              </div>
-              )
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+
+        <Grid columns={3} divided>
+          {props.foods.map((food, i) => (
+            <Grid.Column mobile={16} tablet={8} computer={4}>
+              <Modal key={i} trigger={<Button size="big">{food.name}</Button>} closeIcon="close" size="large">
+                    <FoodDetail food={food} />
+              </Modal>
+            </Grid.Column>
+            )
+          )}
+        </Grid>
   )
 }

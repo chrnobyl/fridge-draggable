@@ -3,10 +3,12 @@ import { Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import FridgeAdapter from '../adapters'
 import FoodList from './FoodList'
-import Form from './Form'
+import FoodForm from './FoodForm'
 import FoodDetail from './FoodDetail'
 import Drawers from './Drawers'
 import CatShow from './CatShow'
+import Background from '../images/emptyfridgewithbanana.jpg'
+import { Grid } from 'semantic-ui-react'
 
 
 export default class FridgeContainer extends Component {
@@ -40,6 +42,7 @@ export default class FridgeContainer extends Component {
   createFood(food){
     FridgeAdapter.create(food)
     .then(data => this.setState((previousState) => {
+      debugger
       return {
         foods: [...previousState.foods, data]
       }
@@ -59,8 +62,8 @@ export default class FridgeContainer extends Component {
   deleteFood(id, food){
     if (parseInt(food.quantity) === 1){
     FridgeAdapter.destroy(id)
-    .then( () => {
-      this.setState( previousState => {
+    .then(() => {
+      this.setState(previousState => {
         return {
           foods: previousState.foods.filter( food => food.id !== id )
         }
@@ -82,29 +85,15 @@ export default class FridgeContainer extends Component {
 
   render(){
     return (
-      <div className="row">
-        <div className="form">
-          <Form createFood={this.createFood.bind(this)} categories={this.state.categories} type="Add a food" />
-        </div>
-        <div className='col-md-8'>
-          <Switch>
-            <Route exact path = '/drawers' render= {() =><Drawers cats={this.state.categories}  />}/>
-            <Route exact path='/drawers/:id' render={(routerProps) => {
-              const id = parseInt(routerProps.match.params.id)
-              const drawer = this.state.categories.find( d =>  d.id === parseInt(id) )
-                if (!drawer){
-                routerProps.history.push("/drawers")
-                return null
-              }
-              return <CatShow drawer={drawer} foods={this.state.foods} id={id}/>
-            }} />
-            <Route exact path='/drawers/new' render={() => <Form newCat={this.createCat.bind(this)} type="Add a Drawer"/>} />
+      <Grid className="fridgeCont" padded>
+        <Grid.Column width={4}>
+          <FoodForm createFood={this.createFood} categories={this.state.categories} type="Add a food" />
+        </Grid.Column>
+        <Grid.Column width={9}>
+          <Drawers cats={this.state.categories} />
 
-
-            <Route exact path='/foods/new' render={() => <Form createFood={this.createFood.bind(this)} categories={this.state.categories} type="Add a food"/>} />
-
-            <Route exact path = '/foods' render= {() => <FoodList foods={this.state.foods} />}/>
-            <Route exact path='/foods/:id' render={(routerProps) => {
+          <FoodList foods={this.state.foods} />
+          <Route exact path='/foods/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
               const food = this.state.foods.find( s =>  s.id === parseInt(id) )
                 if (!food){
@@ -112,11 +101,9 @@ export default class FridgeContainer extends Component {
                 return null
               }
               return <FoodDetail food={food} deleteFood={this.deleteFood}/>
-            }} />
-          </Switch>
-
-        </div>
-      </div>
+          }} />
+        </Grid.Column>
+      </Grid>
     )
   }
 }

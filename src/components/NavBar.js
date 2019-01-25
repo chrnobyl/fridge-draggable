@@ -1,17 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function NavBar(props) {
+export default function NavBar(props) {
   return (
     <nav className="navbar navbar-inverse">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <Link to="/foods" className="navbar-brand">The Fridge</Link>
+        <div>
+          <Link to="/" className="navbar-brand">Home</Link>
+          <Link to="/fridge" className="navbar-brand">The Fridge</Link>
+          <Link to="/freezer" className="navbar-brand">The Freezer</Link>
           <Link to="/drawers" className="navbar-brand">My Drawers</Link>
         </div>
-      </div>
     </nav>
   )
 }
-
-export default NavBar
